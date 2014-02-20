@@ -8,7 +8,7 @@ $(PKG)_CHECKSUM := 71f05afc51e3d9b03376b2f98fd452d3a274d595
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
-$(PKG)_DEPS     := gcc file flac lame libgomp libmad libpng libsndfile libltdl opencore-amr twolame vorbis wavpack
+$(PKG)_DEPS     := gcc file flac libgomp libsndfile libltdl vorbis
 
 define $(PKG)_UPDATE
     $(WGET) -q -O- 'http://sourceforge.net/projects/sox/files/sox/' | \
@@ -33,19 +33,19 @@ define $(PKG)_BUILD
         --disable-debug \
         --with-libltdl \
         --with-magic \
-        --with-png \
-        --with-ladspa \
-        --with-amrwb \
-        --with-amrnb \
+        --without-png \
+        --without-ladspa \
+        --without-amrwb \
+        --without-amrnb \
         --without-ffmpeg \
         --with-flac \
         --with-oggvorbis \
         --with-sndfile \
-        --with-wavpack \
-        --with-mad \
+        --without-wavpack \
+        --without-mad \
         --without-id3tag \
-        --with-lame \
-        --with-twolame \
+        --without-lame \
+        --without-twolame \
         --with-waveaudio \
         --without-alsa \
         --without-ao \
