@@ -25,11 +25,7 @@ define $(PKG)_BUILD
          $(SED) 's, sox_LDADD += ,,g' | tr -d '\n'` >>'$(1)/sox.pc.in'
 
     cd '$(1)' && ./configure \
-        --host='$(TARGET)' \
-        --prefix='$(PREFIX)/$(TARGET)' \
-        --build="`config.guess`" \
-        --disable-shared \
-        --enable-static \
+        $(MXE_CONFIGURE_OPTS) \
         --disable-debug \
         --with-libltdl \
         --with-magic \
